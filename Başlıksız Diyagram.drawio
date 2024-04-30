@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-30T22:27:08.717Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="420QtUEg426nq6ICexdG" version="24.2.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-30T22:41:07.519Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="gQNa1YLjhT6JXtEOhFs3" version="24.2.5" type="github" pages="2">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="1158" dy="2476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -841,6 +841,41 @@
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="1250" y="-1528" as="sourcePoint" />
             <mxPoint x="590" y="-768" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zL7TmR1Iya2VYVM1gUWq" name="Sayfa -2">
+    <mxGraphModel dx="1556" dy="489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-1" value="Player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="520" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-2" value="System" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="920" y="519" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-4" value="Map_One" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-5" value="Map_Two" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="290" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-6" value="START GAME" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="545" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-8" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.809;exitY=0.029;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.076;entryY=0.822;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vzPGTHO24TgCZ0PMpu6v-6" target="vzPGTHO24TgCZ0PMpu6v-4">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="150" y="390" as="sourcePoint" />
+            <mxPoint x="310" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vzPGTHO24TgCZ0PMpu6v-9" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.962;exitY=0.337;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="vzPGTHO24TgCZ0PMpu6v-6" target="vzPGTHO24TgCZ0PMpu6v-5">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="190" y="571" as="sourcePoint" />
+            <mxPoint x="365" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
