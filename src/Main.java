@@ -1,6 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        System.out.println("Hello world!");
+
+        //start the game
+
     }
 }
+
+// işlemleri map map gerçekleştireceğiz
+//enigmayı hallet
+//map field çevir
