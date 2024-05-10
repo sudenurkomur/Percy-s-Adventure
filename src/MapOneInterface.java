@@ -1,2 +1,2 @@
-public interface MapOneInterface {
+interface MapOneInterface {
 }
