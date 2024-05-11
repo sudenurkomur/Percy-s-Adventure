@@ -2,8 +2,6 @@ import enigma.core.Enigma;
 import java.awt.Color;
 import enigma.event.TextMouseEvent;
 import enigma.event.TextMouseListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
 import enigma.console.TextAttributes;
 import javax.sound.sampled.*;
@@ -11,16 +9,49 @@ import javax.sound.sampled.*;
 
 public class Menu {
     public static enigma.console.Console cn;
+    public static TextMouseListener tmlis;
+    public static int mousepr;          // mouse pressed?
+    public static int mousex;
+    public static int mousey;   // mouse text coords.
 
-    public static void Main() {
+
+    public Menu() throws InterruptedException{
+
         printMenuTitle();
         printMenuItems();
         drawSquare();
-        playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav");
+        playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav" );
+
+        tmlis=new TextMouseListener() {
+            @Override
+            public void mouseClicked(TextMouseEvent arg0) {
+                int x = arg0.getX();
+                int y = arg0.getY();
+                System.out.print("Fare tıklaması: (" + x + ", " + y + ")");
+            }
+            public void mousePressed(TextMouseEvent arg0) {
+                if(mousepr ==0) {
+                    mousepr=1;
+                    mousex=arg0.getX();
+                    mousey=arg0.getY();
+
+                }
+            }
+
+            public void mouseReleased(TextMouseEvent arg0) {}
+        };
+        cn.getTextWindow().addTextMouseListener(tmlis);
+
+        while(true) {
+            if(mousepr==1 && mousex<=42 && mousex >=38&& mousey ==7 ) {  // if mouse button pressed
+                MapOne map1 =new MapOne();
+                map1.read();
+            }
+        }
     }
 
     public static void printMenuTitle() {
-        cn = Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,30);
+        cn = Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);
         String tridentEmoji ="🔱";
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
@@ -121,6 +152,25 @@ public class Menu {
         }
     }
 
+    public static void Mouse()  {
+
+        // ------ Standard code for mouse and keyboard ------ Do not change
+        tmlis=new TextMouseListener() {
+            @Override
+            public void mouseClicked(TextMouseEvent textMouseEvent) {}
+            public void mousePressed(TextMouseEvent arg0) {
+                if(mousepr ==0) {
+                    mousepr=1;
+                    mousex=arg0.getX();
+                    mousey=arg0.getY();
+
+                }
+            }
+
+            public void mouseReleased(TextMouseEvent arg0) {}
+        };
+        cn.getTextWindow().addTextMouseListener(tmlis);
+    }
 
 
 }

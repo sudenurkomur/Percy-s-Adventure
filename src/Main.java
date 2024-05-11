@@ -1,14 +1,13 @@
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
 
         //calling class start with in order
-        Menu menu =new Menu();
-        menu.Main();
+        new Menu();
     }
 
 }
 
 // işlemleri map map gerçekleştireceğiz
-//enigmayı hallet
+
 //map field çevir
