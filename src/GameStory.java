@@ -110,12 +110,15 @@ public class GameStory {
         }
 
         if(choose == 3){
-            cn.getTextWindow().setCursorPosition(29, 19);
-            String word = "Escape from enemies and save the world. LET'S START!";
+            cn.getTextWindow().setCursorPosition(30, 19);
+            String word = "Escape from enemies and save the world. LET'S START! ";
             for (int i = 0; i < word.length(); i++) {
                 Thread.sleep(80);
                 cn.getTextWindow().output(word.charAt(i));
             }
+            String mermanEmoji = "\uD83E\uDDDC\u200D";
+            cn.getTextWindow().output(mermanEmoji);
+            Thread.sleep(800);
         }
 
 
