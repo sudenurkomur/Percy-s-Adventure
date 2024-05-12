@@ -1,57 +1,40 @@
+import enigma.console.Console;
 import enigma.core.Enigma;
 import java.awt.Color;
-import enigma.event.TextMouseEvent;
-import enigma.event.TextMouseListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import enigma.console.TextAttributes;
 import javax.sound.sampled.*;
 
 
 public class Menu {
-    public static enigma.console.Console cn;
-    public static TextMouseListener tmlis;
-    public static int mousepr;          // mouse pressed?
-    public static int mousex;
-    public static int mousey;   // mouse text coords.
+    public static enigma.console.Console cn= Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);
+    public static KeyListener klis;
+    public static int keypr;   // key pressed?
+    public static int rkey;    // key   (for press/release)
 
 
     public Menu() throws InterruptedException{
 
+        consoleClear();
         printMenuTitle();
         printMenuItems();
         drawSquare();
         playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav" );
+        Mouse();
 
-        tmlis=new TextMouseListener() {
-            @Override
-            public void mouseClicked(TextMouseEvent arg0) {
-                int x = arg0.getX();
-                int y = arg0.getY();
-                System.out.print("Fare tıklaması: (" + x + ", " + y + ")");
-            }
-            public void mousePressed(TextMouseEvent arg0) {
-                if(mousepr ==0) {
-                    mousepr=1;
-                    mousex=arg0.getX();
-                    mousey=arg0.getY();
-
-                }
-            }
-
-            public void mouseReleased(TextMouseEvent arg0) {}
-        };
-        cn.getTextWindow().addTextMouseListener(tmlis);
-
-        while(true) {
-            if(mousepr==1 && mousex<=42 && mousex >=38&& mousey ==7 ) {  // if mouse button pressed
-                MapOne map1 =new MapOne();
-                map1.read();
-            }
-        }
     }
 
+    public static void consoleClear(){
+        for (int i = 0; i < 28; i++) {
+            for (int j = 0; j < 120; j++) {
+                cn.getTextWindow().output(j, i, ' ');
+            }
+            System.out.println();
+        }
+    }
     public static void printMenuTitle() {
-        cn = Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);
         String tridentEmoji ="🔱";
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
@@ -152,25 +135,67 @@ public class Menu {
         }
     }
 
-    public static void Mouse()  {
-
-        // ------ Standard code for mouse and keyboard ------ Do not change
-        tmlis=new TextMouseListener() {
-            @Override
-            public void mouseClicked(TextMouseEvent textMouseEvent) {}
-            public void mousePressed(TextMouseEvent arg0) {
-                if(mousepr ==0) {
-                    mousepr=1;
-                    mousex=arg0.getX();
-                    mousey=arg0.getY();
-
+    public static void Mouse()throws InterruptedException{
+        klis=new KeyListener() {
+            public void keyTyped(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {
+                if(keypr==0) {
+                    keypr=1;
+                    rkey=e.getKeyCode();
                 }
             }
-
-            public void mouseReleased(TextMouseEvent arg0) {}
+            public void keyReleased(KeyEvent e) {}
         };
-        cn.getTextWindow().addTextMouseListener(tmlis);
-    }
+        Menu.cn.getTextWindow().addKeyListener(klis);
 
+        int plusX = 25,plusY = 7;
+        char emoji = '\u26AA'; // ⚪ Unicode karakteri
+        Menu.cn.getTextWindow().output(plusX, plusY, emoji);
+        Thread.sleep(3);
+        int enable=0;
+
+        while(true)
+        {
+            Menu.cn.getTextWindow().setCursorPosition(plusX,plusY);
+            Menu.cn.getTextWindow().output(" ");
+
+            if(keypr==1)
+            {
+                if(rkey==KeyEvent.VK_UP && plusY>0) {
+                    if((plusY-7) % 2 == 0) {
+                        if (plusY > 7) plusY = plusY - 4;
+                    }
+                }
+                else if(rkey==KeyEvent.VK_DOWN && plusY>0) {
+                    if((plusY-7) % 2 == 0) {
+                        if (plusY < 19) plusY = plusY + 4;
+                    }
+                }
+                else if(rkey==KeyEvent.VK_ENTER && plusY>0) {
+
+                    if (plusY ==7){
+                        enable=1;
+                        MapOne map1 =new MapOne();
+                        map1.MapOne(cn);
+                    }
+
+                    else if (plusY ==15){
+                        enable=1;
+                        GameStory gameStory =new GameStory();
+                        new GameStory();
+
+                    }
+
+                }
+                keypr=0;
+                rkey = KeyEvent.KEY_LOCATION_STANDARD;
+            }
+            Menu.cn.getTextWindow().setCursorPosition(plusX,plusY);
+            if(enable==0){
+                Menu.cn.getTextWindow().output(emoji);
+            }
+            Thread.sleep(3);
+        }
+    }
 
 }
