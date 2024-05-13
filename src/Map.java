@@ -20,9 +20,8 @@ public class Map {
             System.out.println();
         }
     }
-    public void callMap(){
+    public void callMap() throws InterruptedException {
         consoleClear(cn);
-        System.out.println(rows +" sabah " + cols);
         MapTwo map2= new MapTwo(rows,cols);
         map2.startCall();
     }

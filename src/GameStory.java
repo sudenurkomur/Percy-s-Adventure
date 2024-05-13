@@ -183,7 +183,7 @@ public class GameStory {
                         characterInt(3);
                         enable=1;
                         Thread.sleep(70);
-                        Map map=new Map(120,80);
+                        Map map=new Map(60,60);
                         map.callMap();
                     }
 
