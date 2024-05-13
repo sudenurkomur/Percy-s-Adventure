@@ -183,8 +183,8 @@ public class GameStory {
                         characterInt(3);
                         enable=1;
                         Thread.sleep(70);
-                        MapOne map1 =new MapOne();
-                        map1.MapOne(cn);
+                        Map map=new Map(120,80);
+                        map.callMap();
                     }
 
                 }

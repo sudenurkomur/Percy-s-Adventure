@@ -16,17 +16,15 @@ public class Menu {
 
 
     public Menu() throws InterruptedException{
-
         consoleClear();
         printMenuTitle();
         printMenuItems();
         drawSquare();
         playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav" );
         Mouse();
-
     }
 
-    public static void consoleClear(){
+    public void consoleClear(){
         for (int i = 0; i < 28; i++) {
             for (int j = 0; j < 120; j++) {
                 cn.getTextWindow().output(j, i, ' ');
@@ -34,7 +32,7 @@ public class Menu {
             System.out.println();
         }
     }
-    public static void printMenuTitle() {
+    public void printMenuTitle() {
         String tridentEmoji ="🔱";
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
@@ -43,7 +41,7 @@ public class Menu {
         System.out.println();
     }
 
-    public static void printMenuItems() {
+    public void printMenuItems() {
 
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
@@ -66,7 +64,7 @@ public class Menu {
         cn.getTextWindow().output("QUİT" ,cyan);
         System.out.println();
     }
-    public static void drawSquare() {
+    public void drawSquare() {
 
         int counter=0;
         for(int i=0;i<44;i=i+2){
@@ -90,7 +88,6 @@ public class Menu {
             cn.getTextWindow().setCursorPosition(19+i,3+counter);
             char tilda = '~';
             cn.getTextWindow().output(tilda +" ",cyan);
-
         }
 
         for(int i=0;i<20;i++){
@@ -101,7 +98,7 @@ public class Menu {
 
         }
     }
-    public static void playBackgroundMusic(String musicLocation)
+    public void playBackgroundMusic(String musicLocation)
     {
 
         try
@@ -135,7 +132,7 @@ public class Menu {
         }
     }
 
-    public static void Mouse()throws InterruptedException{
+    public void Mouse()throws InterruptedException{
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {
@@ -175,8 +172,8 @@ public class Menu {
 
                     if (plusY ==7){
                         enable=1;
-                        MapOne map1 =new MapOne();
-                        map1.MapOne(cn);
+                        Map map=new Map(60,60);
+                        map.callMap();
                     }
 
                     else if (plusY ==15){
@@ -184,6 +181,10 @@ public class Menu {
                         GameStory gameStory =new GameStory();
                         new GameStory();
 
+                    }
+                    else if (plusY ==19){
+                        enable=1;
+                        System.exit(0);
                     }
 
                 }
