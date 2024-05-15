@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+
 import enigma.console.TextAttributes;
 import javax.sound.sampled.*;
 
@@ -15,7 +17,7 @@ public class Menu {
     public static int rkey;    // key   (for press/release)
 
 
-    public Menu() throws InterruptedException{
+    public Menu() throws InterruptedException, FileNotFoundException {
         consoleClear();
         printMenuTitle();
         printMenuItems();
@@ -61,7 +63,7 @@ public class Menu {
 
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
         cn.getTextWindow().setCursorPosition(39,19);
-        cn.getTextWindow().output("QUİT" ,cyan);
+        cn.getTextWindow().output("QUIT" ,cyan);
         System.out.println();
     }
     public void drawSquare() {
@@ -132,7 +134,7 @@ public class Menu {
         }
     }
 
-    public void Mouse()throws InterruptedException{
+    public void Mouse() throws FileNotFoundException, InterruptedException {
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {
@@ -174,8 +176,15 @@ public class Menu {
                         enable=1;
                         Map map=new Map(60,60);
                         map.callMap();
+                        //EndMenu endMenu = new EndMenu();
+                        //endMenu.callEnd(3, "Lila");
+                        //Score scr =new Score(1,80);
                     }
+                    else if (plusY ==11){
+                        enable=1;
+                        Score score=new Score(0,0);
 
+                    }
                     else if (plusY ==15){
                         enable=1;
                         GameStory gameStory =new GameStory();

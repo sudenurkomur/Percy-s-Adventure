@@ -1,4 +1,3 @@
-import enigma.console.Console;
 import enigma.console.TextAttributes;
 import enigma.core.Enigma;
 
@@ -24,26 +23,15 @@ public class MapTwo extends Map implements MapTwoInterface{
 
     public void generateRockForMap(int[][] numbers){
         Random rand = new Random();
-        cn.getTextWindow().setCursorPosition(70,70);
-        int int_random = rand.nextInt(5, 15);
-        System.out.println(int_random);
+        int int_random = 4;
         boolean flag=true;
-        for (int i = 0; i <int_random; i++) {
-            int int_random_replace_X = rand.nextInt(60);
-            int int_random_replace_y = rand.nextInt(26);
-            if(numbers[int_random_replace_X][int_random_replace_y] == 0){  //rock için yerleştirme
-                numbers[int_random_replace_X][int_random_replace_y] = 6;
-            }
-            else{
-                while(flag){
-                    int_random_replace_X = rand.nextInt(60);
-                    int_random_replace_y = rand.nextInt(26);
-                    if(numbers[int_random_replace_X][int_random_replace_y] == 0){  //rock için yerleştirme
-                        numbers[int_random_replace_X][int_random_replace_y] = 6;
-                        flag=false;
-                    }
-                }
-            }
+        for(int i = 6; i <15; i++){
+
+            numbers[i][i] = 6;
+        }
+        for(int i = 0; i <1; i++){
+
+            numbers[19+i][19] = 6;
         }
     }
 
@@ -55,7 +43,7 @@ public class MapTwo extends Map implements MapTwoInterface{
         drawSquare(numbers);
         generateRockForMap(numbers);
         boardDisplay(numbers,60,60);
-        Mouse();
+        Mouse(numbers);
     }
 
 
@@ -87,18 +75,17 @@ public class MapTwo extends Map implements MapTwoInterface{
     }
 
     public void Door(int[][] numbers){
-
-        numbers[1][1]=-1;
-        numbers[1][2]=-1;
-        numbers[4][1]=-1;
-        //numbers[5][5]=5;
-        numbers[4][2]=-1;
-
+        numbers[26][57]=-1;
+        numbers[23][58]=-1;
+        numbers[26][58]=-1;
+        numbers[23][57]=-1;
     }
-    public void boardDisplay(int[][] numbers, int rows,int cols){
+
+    public void boardDisplay(int[][] numbers, int rows,int cols) throws InterruptedException {
 
         cn.getTextWindow().setCursorPosition(0,0);
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
+        TextAttributes blue = new TextAttributes(Color.blue);
         String tridentEmoji ="🔱";
         String percy ="\uD83C\uDFC3";
         char ust = '\u23E9'; // Üst kısım
@@ -107,31 +94,31 @@ public class MapTwo extends Map implements MapTwoInterface{
         //cn.getTextWindow().output("a" +" ",cyan);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if(numbers[i][j] == 0){
-                    cn.getTextWindow().setCursorPosition(j,i);
-                    cn.getTextWindow().output("k");
-                }
-                 else if(numbers[i][j] == -1){      //kapı
+                 if(numbers[i][j] == -1){      //kapı
                     cn.getTextWindow().setCursorPosition(j, i);
-                    cn.getTextWindow().output(ust);
+                    cn.getTextWindow().output("-");
                  }
                 else if(numbers[i][j] == 1){        //duvar
                     char tilda = '~';
                     cn.getTextWindow().setCursorPosition(j, i);
                     cn.getTextWindow().output(tilda +"",cyan);
                 }
-                else if(numbers[j][i] == 5){        //karakter
+                else if(numbers[i][j] == 5){        //karakter
                     cn.getTextWindow().setCursorPosition(j, i);
                     cn.getTextWindow().output(percy);
                 }
-                else if(numbers[j][i] == 6){        //rock
+                else if(numbers[i][j] == 6){        //rock
                     cn.getTextWindow().setCursorPosition(j, i);
-                    cn.getTextWindow().output(dag);
+                    cn.getTextWindow().output("#");
+                }
+                else if(numbers[i][j] == 2){        //bomba
+                    cn.getTextWindow().setCursorPosition(j, i);
+                    cn.getTextWindow().output("+",blue);
                 }
                 else if(numbers[i][j] != 6 && numbers[i][j] != 5 &&numbers[i][j] != 1 &&  numbers[i][j] != 0){
                     numbers[i][j] = 0;
                     cn.getTextWindow().setCursorPosition(j, i);
-                    cn.getTextWindow().output("k");
+                    cn.getTextWindow().output("9");
                 }
             }
         }
@@ -150,7 +137,7 @@ public class MapTwo extends Map implements MapTwoInterface{
         return cols;
     }
 
-    public void Mouse()throws InterruptedException{
+    public void Mouse(int[][] numbers)throws InterruptedException{
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {
@@ -177,24 +164,28 @@ public class MapTwo extends Map implements MapTwoInterface{
 
             if(keypr==1)
             {
-                if(rkey==KeyEvent.VK_UP && plusY>0&& numbers[plusX][plusY-1] ==0&& plusY!=0) {
+                if(rkey==KeyEvent.VK_UP && plusY>0&& numbers[plusX][plusY-1] == 0) {
                     plusY--;
                 }
-                else if(rkey==KeyEvent.VK_DOWN && plusY>0 && numbers[plusY+1][plusX] ==0 && plusY!=26) {
+                else if(rkey==KeyEvent.VK_DOWN && plusY>0 && numbers[plusX][plusY+1] == 0 && plusY!= 26) {
                     plusY++;
                 }
-                else if(rkey==KeyEvent.VK_RIGHT && plusY>0 && numbers[plusX +1][plusY] ==0 && plusX!=60) {
+                else if(rkey==KeyEvent.VK_RIGHT && plusY>0 && numbers[plusX+1][plusY] == 0 && plusX!= 60) {
                     plusX++;
                 }
-                else if(rkey==KeyEvent.VK_LEFT && plusY>0&& numbers[plusX-1][plusY] ==0 && plusX!=60) {
+                else if(rkey==KeyEvent.VK_LEFT && plusY>0&& numbers[plusX-1][plusY] == 0 && numbers[plusX+1][plusY] != -1 &&plusX!= 60) {
                     plusX--;
+                }
+                else if(rkey==KeyEvent.VK_SPACE && plusY>0 && numbers[plusY][plusX-1] == 0 && plusX!= 60 && plusY!= 26) {
+                    numbers[plusY][plusX-1] =2;
+                    boardDisplay(numbers,60,60);
                 }
                 keypr=0;
                 rkey = KeyEvent.KEY_LOCATION_STANDARD;
             }
             Menu.cn.getTextWindow().setCursorPosition(plusX,plusY);
             if(enable==0){
-                Menu.cn.getTextWindow().output(gulumseme);
+                cn.getTextWindow().output(gulumseme);
             }
             Thread.sleep(3);
         }
