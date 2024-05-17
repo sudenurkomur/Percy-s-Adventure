@@ -5,6 +5,8 @@ import enigma.core.Enigma;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class EndMenu {
 
@@ -13,7 +15,7 @@ public class EndMenu {
     public static int keypr;   // key pressed?
     public static int rkey;    // key   (for press/release)
 
-    public void callEnd (int enable ,String name) throws InterruptedException {
+    public void callEnd (int enable, String name) throws InterruptedException, IOException {
         consoleClear(cn);
         if(enable==1){
             printMenuTitle(); //loser
@@ -27,6 +29,8 @@ public class EndMenu {
         printMenuItems();
         drawSquare();
         Mouse();
+        Thread.sleep(5000);
+        printMenuTitle(3);
     }
 
     public void consoleClear(Console cn) {
@@ -60,8 +64,8 @@ public class EndMenu {
         String tridentEmoji ="🔱";
         TextAttributes cyan = new TextAttributes(Color.cyan,Color.darkGray);
         cn.getTextWindow().setTitle(String.valueOf("PERCY'S ADVENTURE"));
-        cn.getTextWindow().setCursorPosition(32,1);
-        cn.getTextWindow().output(tridentEmoji + " WINNER " + name +" "+ tridentEmoji,cyan);
+        cn.getTextWindow().setCursorPosition(34,1);
+        cn.getTextWindow().output(tridentEmoji + " WINNER "+ tridentEmoji,cyan);
         System.out.println();
     }
 
@@ -117,7 +121,7 @@ public class EndMenu {
 
         }
     }
-    public void Mouse()throws InterruptedException{
+    public void Mouse() throws InterruptedException, IOException {
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {

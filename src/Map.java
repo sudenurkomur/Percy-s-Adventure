@@ -1,7 +1,11 @@
 import enigma.console.Console;
 import enigma.core.Enigma;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Map {
-    public static enigma.console.Console cn = Enigma.getConsole("-- Welcome The MAZE --",120,28,20);
+    private enigma.console.Console cn = Enigma.getConsole("-- Welcome The MAZE --",120,28,20);
     private int[][] numbers;
     private int rows;
     private int cols;
@@ -20,7 +24,7 @@ public class Map {
             System.out.println();
         }
     }
-    public void callMap() throws InterruptedException {
+    public void callMap() throws InterruptedException, IOException {
         consoleClear(cn);
         MapTwo map2= new MapTwo(rows,cols);
         map2.startCall();
@@ -43,5 +47,12 @@ public class Map {
         return cols;
     }
 
+    public enigma.console.Console getCn() {
+        return cn;
+    }
+
+    public void setCn(enigma.console.Console newCn) {
+        cn = newCn;
+    }
 
 }

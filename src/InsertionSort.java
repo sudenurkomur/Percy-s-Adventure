@@ -1,14 +1,17 @@
+import enigma.core.Enigma;
+
 public class InsertionSort {
 
 
     public void Sort(int[] A , String[] B , String[] C) {
 
+        enigma.console.Console cn = Enigma.getConsole("HIGH SCORE", 120, 28, 20);
         int key;
         String name;
         String surname;
         int i;
         //2, 5, 3, 1, 9, 6
-        for(int j=2; j<A.length; j++) {
+        for(int j=1; j<A.length; j++) {
             key=A[j];
             name =B[j];
             surname =C[j];

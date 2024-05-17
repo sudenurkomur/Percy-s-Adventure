@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import enigma.console.TextAttributes;
 import javax.sound.sampled.*;
@@ -17,13 +18,24 @@ public class Menu {
     public static int rkey;    // key   (for press/release)
 
 
-    public Menu() throws InterruptedException, FileNotFoundException {
-        consoleClear();
-        printMenuTitle();
-        printMenuItems();
-        drawSquare();
-        playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav" );
-        Mouse();
+    public Menu(int enable) throws InterruptedException, IOException {
+        if(enable==1){
+            consoleClear();
+            printMenuTitle();
+            printMenuItems();
+            drawSquare();
+            playBackgroundMusic("/Users/sudenurkomur/Downloads/music.wav" );
+            Mouse();
+        }
+        if(enable==2){
+            consoleClear();
+            printMenuTitle();
+            printMenuItems();
+            drawSquare();
+            Mouse();
+        }
+
+
     }
 
     public void consoleClear(){
@@ -134,7 +146,7 @@ public class Menu {
         }
     }
 
-    public void Mouse() throws FileNotFoundException, InterruptedException {
+    public void Mouse() throws IOException, InterruptedException {
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {
@@ -176,13 +188,10 @@ public class Menu {
                         enable=1;
                         Map map=new Map(60,60);
                         map.callMap();
-                        //EndMenu endMenu = new EndMenu();
-                        //endMenu.callEnd(3, "Lila");
-                        //Score scr =new Score(1,80);
                     }
                     else if (plusY ==11){
                         enable=1;
-                        Score score=new Score(0,0);
+                        ScoreTable score=new ScoreTable(0,0);
 
                     }
                     else if (plusY ==15){

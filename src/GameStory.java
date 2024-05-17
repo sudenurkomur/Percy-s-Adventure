@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class GameStory {
     public static Console cn= Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);;
@@ -17,7 +19,7 @@ public class GameStory {
     public static KeyListener klis;
     public static int keypr;   // key pressed?
     public static int rkey;    // key   (for press/release)
-    public GameStory() throws InterruptedException{
+    public GameStory() throws InterruptedException, IOException {
 
         consoleClear();
         drawSquare();
@@ -77,7 +79,7 @@ public class GameStory {
             cn.getTextWindow().setCursorPosition(29,7);
             cn.getTextWindow().output("Percy is the demigod son of Poseidon.");
             cn.getTextWindow().setCursorPosition(30,8);
-            cn.getTextWindow().output("Hp: He can die");
+            cn.getTextWindow().output("Hp: He can't die");
             cn.getTextWindow().setCursorPosition(30,9);
             cn.getTextWindow().output("Weapen: ");
             cn.getTextWindow().setCursorPosition(39,9);
@@ -89,23 +91,23 @@ public class GameStory {
             cn.getTextWindow().setCursorPosition(29,11);
             cn.getTextWindow().output("Medusa was cursed because she fell in love with Poseidon.");
             cn.getTextWindow().setCursorPosition(30,12);
-            cn.getTextWindow().output("Hp: She can die");
+            cn.getTextWindow().output("Hp: She can't die");
             cn.getTextWindow().setCursorPosition(30,13);
             cn.getTextWindow().output("Weapen: ");
             cn.getTextWindow().setCursorPosition(39,13);
-            cn.getTextWindow().output("Snake Venom");
+            cn.getTextWindow().output("Stable");
 
         }
 
         if(choose == 2){
             cn.getTextWindow().setCursorPosition(29,15);
-            cn.getTextWindow().output("Kerberos, a three-headed dog, guarding Hades' underworld gate.");
+            cn.getTextWindow().output("Kerberos, a three-headed dog,guarding Hades's underworld gate.");
             cn.getTextWindow().setCursorPosition(30,16);
-            cn.getTextWindow().output("Hp: It can die");
+            cn.getTextWindow().output("Hp: It can't die");
             cn.getTextWindow().setCursorPosition(30,17);
             cn.getTextWindow().output("Weapen: ");
             cn.getTextWindow().setCursorPosition(39,17);
-            cn.getTextWindow().output("Fire Ball");
+            cn.getTextWindow().output("Stable");
 
         }
 
@@ -124,7 +126,7 @@ public class GameStory {
 
     }
 
-    public static void Mouse()throws InterruptedException{
+    public static void Mouse() throws InterruptedException, IOException {
 
         klis=new KeyListener() {
             public void keyTyped(KeyEvent e) {}
