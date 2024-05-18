@@ -16,9 +16,10 @@ import java.io.IOException;
 public class GameStory {
     public static Console cn= Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);;
 
-    public static KeyListener klis;
-    public static int keypr;   // key pressed?
-    public static int rkey;    // key   (for press/release)
+    private static KeyListener klis;
+    private static int keypr;   // key pressed?
+    private static int rkey;    // key   (for press/release)
+
     public GameStory() throws InterruptedException, IOException {
 
         consoleClear();
@@ -26,6 +27,7 @@ public class GameStory {
         Mouse();
 
     }
+
     public void consoleClear() {
         for (int i = 0; i < 28; i++) {
             for (int j = 0; j < 120; j++) {
@@ -184,7 +186,7 @@ public class GameStory {
                         playBackgroundMusic("/Users/sudenurkomur/Downloads/mouse.wav");
                         characterInt(3);
                         enable=1;
-                        Thread.sleep(70);
+                        Thread.sleep(7000);
                         Map map=new Map(60,60);
                         map.callMap();
                     }
@@ -221,6 +223,35 @@ public class GameStory {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    // Getter for 'klis'
+    public static KeyListener getKlis() {
+        return klis;
+    }
+
+    // Setter for 'klis'
+    public static void setKlis(KeyListener newKlis) {
+        klis = newKlis;
+    }
+
+    // Getter for 'keypr'
+    public static int getKeypr() {
+        return keypr;
+    }
+
+    // Setter for 'keypr'
+    public static void setKeypr(int newKeypr) {
+        keypr = newKeypr;
+    }
+
+    // Getter for 'rkey'
+    public static int getRkey() {
+        return rkey;
+    }
+
+    // Setter for 'rkey'
+    public static void setRkey(int newRkey) {
+        rkey = newRkey;
     }
 
 }

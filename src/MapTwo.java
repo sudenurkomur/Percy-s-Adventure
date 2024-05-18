@@ -10,13 +10,13 @@ import java.awt.*;
 
 public class MapTwo extends Map implements MapTwoInterface{
 
-    public static enigma.console.Console cn = Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);;
-    private static int[][] numbers;
+    private static enigma.console.Console cn = Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);;
+    private int[][] numbers;
     private int rows;
     private int cols;
-    public static KeyListener klis;
-    public static int keypr;   // key pressed?
-    public static int rkey;    // key   (for press/release)
+    private KeyListener klis;
+    private int keypr;   // key pressed?
+    private int rkey;    // key   (for press/release)
 
 
     public MapTwo(int rows, int cols) {
@@ -203,19 +203,6 @@ public class MapTwo extends Map implements MapTwoInterface{
         }
     }
 
-    public int getNumber(int row, int col, int number) {
-        return numbers[row][col];
-    }
-    public void setNumber(int row, int col, int number) {
-        numbers[row][col] = number;
-    }
-    public int getRows() {
-        return rows;
-    }
-    public int getCols() {
-        return cols;
-    }
-
     public void Mouse(int[][] numbers) throws InterruptedException, IOException {
 
         int score=0;
@@ -253,8 +240,8 @@ public class MapTwo extends Map implements MapTwoInterface{
                     score=scr.calculateScore(score,5);
                     System.out.print("Score: " + score);
                     if(counter % 3==0){
-                        Medusa mds=new Medusa();
-                        mds.generateRandomMedusa(numbers);
+                        Medusa mds=new Medusa("Score",  enable,  score, plusX, plusY);
+                        mds.generateRandom(numbers);
                         boardDisplay(numbers,60,60);
                         cn.getTextWindow().setCursorPosition(70, 8);
                         score=scr.calculateScore(score,0);
@@ -268,8 +255,8 @@ public class MapTwo extends Map implements MapTwoInterface{
                     score=scr.calculateScore(score,3);
                     System.out.print("Score: " + score);
                     if(counter % 5==0){
-                    Kerberos mds=new Kerberos();
-                    mds.generateRandomKerberos(numbers);
+                    Kerberos mds=new Kerberos("Score",  enable,  score, plusX, plusY);
+                    mds.generateRandom(numbers);
                         cn.getTextWindow().setCursorPosition(70, 8);
                         score=scr.calculateScore(score,0);
                         System.out.print("Score: " + score);
@@ -282,8 +269,8 @@ public class MapTwo extends Map implements MapTwoInterface{
                     score=scr.calculateScore(score,3);
                     System.out.print("Score: " + score);
                     if(counter % 5==0){
-                        Medusa mds=new Medusa();
-                        mds.generateRandomMedusa(numbers);
+                        Medusa mds=new Medusa("Score",  enable,  score, plusX, plusY);
+                        mds.generateRandom(numbers);
                         cn.getTextWindow().setCursorPosition(70, 8);
                         score=scr.calculateScore(score,0);
                         System.out.print("Score: " + score);
@@ -296,8 +283,8 @@ public class MapTwo extends Map implements MapTwoInterface{
                     score=scr.calculateScore(score,5);
                     System.out.print("Score: " +score);
                     if(counter % 3==0){
-                        Kerberos mds=new Kerberos();
-                        mds.generateRandomKerberos(numbers);
+                        Kerberos mds=new Kerberos("Score",  enable,  score, plusX, plusY);
+                        mds.generateRandom(numbers);
                         cn.getTextWindow().setCursorPosition(70, 8);
                         score=scr.calculateScore(score,0);
                         System.out.print("Score: " +score);
@@ -330,6 +317,76 @@ public class MapTwo extends Map implements MapTwoInterface{
             Thread.sleep(3);
         }
 
+    }
+
+    // Getter for 'cn'
+    public enigma.console.Console getCn() {
+        return cn;
+    }
+
+    // Setter for 'cn'
+    public void setCn(enigma.console.Console newCn) {
+        cn = newCn;
+    }
+
+    // Getter for 'numbers'
+    public int[][] getNumbers() {
+        return numbers;
+    }
+
+    // Setter for 'numbers'
+    public void setNumbers(int[][] numbers) {
+        this.numbers = numbers;
+    }
+
+    // Getter for 'rows'
+    public int getRows() {
+        return rows;
+    }
+
+    // Setter for 'rows'
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    // Getter for 'cols'
+    public int getCols() {
+        return cols;
+    }
+
+    // Setter for 'cols'
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+
+    // Getter for 'klis'
+    public KeyListener getKlis() {
+        return klis;
+    }
+
+    // Setter for 'klis'
+    public void setKlis(KeyListener klis) {
+        this.klis = klis;
+    }
+
+    // Getter for 'keypr'
+    public int getKeypr() {
+        return keypr;
+    }
+
+    // Setter for 'keypr'
+    public void setKeypr(int keypr) {
+        this.keypr = keypr;
+    }
+
+    // Getter for 'rkey'
+    public int getRkey() {
+        return rkey;
+    }
+
+    // Setter for 'rkey'
+    public void setRkey(int rkey) {
+        this.rkey = rkey;
     }
 }
 

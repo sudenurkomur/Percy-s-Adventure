@@ -8,12 +8,12 @@ import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class EndMenu {
+public class EndMenu implements EndMenuInterface{
 
-    public static enigma.console.Console cn= Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);
-    public static KeyListener klis;
-    public static int keypr;   // key pressed?
-    public static int rkey;    // key   (for press/release)
+    private enigma.console.Console cn= Enigma.getConsole("PERCY'S ADVENTURE" ,120,28,20);
+    private KeyListener klis;
+    private int keypr;   // key pressed?
+    private int rkey;    // key   (for press/release)
 
     public void callEnd (int enable, String name) throws InterruptedException, IOException {
         consoleClear(cn);
@@ -180,4 +180,44 @@ public class EndMenu {
             Thread.sleep(3);
         }
     }
+
+    public enigma.console.Console getCn() {
+        return cn;
+    }
+
+    // Setter for 'cn'
+    public void setCn(enigma.console.Console newCn) {
+        cn = newCn;
+    }
+
+    // Getter for 'klis'
+    public KeyListener getKlis() {
+        return klis;
+    }
+
+    // Setter for 'klis'
+    public void setKlis(KeyListener newKlis) {
+        klis = newKlis;
+    }
+
+    // Getter for 'keypr'
+    public int getKeypr() {
+        return keypr;
+    }
+
+    // Setter for 'keypr'
+    public void setKeypr(int newKeypr) {
+        keypr = newKeypr;
+    }
+
+    // Getter for 'rkey'
+    public int getRkey() {
+        return rkey;
+    }
+
+    // Setter for 'rkey'
+    public void setRkey(int newRkey) {
+        rkey = newRkey;
+    }
+
 }

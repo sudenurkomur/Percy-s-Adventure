@@ -5,8 +5,8 @@ public abstract class Staff {
     private int damage;
     private int location_type;
     private Map location_array;
-    private Map spawn_locationX;
-    private Map spawn_locationY;
+    Map spawn_locationX;
+    Map spawn_locationY;
     private int speed;
     private int seed;
 
@@ -95,4 +95,6 @@ public abstract class Staff {
     public void setSeed(int seed) {
         this.seed = seed;
     }
+
+    public abstract void act();
 }

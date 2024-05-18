@@ -4,7 +4,7 @@ import enigma.core.Enigma;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class Map {
+public class Map implements MapInterface{
     private enigma.console.Console cn = Enigma.getConsole("-- Welcome The MAZE --",120,28,20);
     private int[][] numbers;
     private int rows;

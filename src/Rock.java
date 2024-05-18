@@ -7,7 +7,6 @@ public class Rock extends Staff {
     public Rock(String name, int type, int damage, int location_type, Map location_array, Map spawn_locationX, Map spawn_locationY, int speed,int maxrockNumber,int seed) {
         super(name, type, damage, location_type, location_array, spawn_locationX, spawn_locationY, speed);
         this.maxrockNumber = maxrockNumber;
-
     }
 
     // Getter ve setter metotları
@@ -27,6 +26,11 @@ public class Rock extends Staff {
             int randomNumberY = rnd.nextInt(100);
             i++;
         }
+    }
+
+    @Override
+    public void act() {
+
     }
 }
 

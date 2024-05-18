@@ -2,7 +2,11 @@ import java.util.Random;
 
 public class Kerberos extends Enemy{
 
-    public void generateRandomKerberos(int[][] numbers) throws InterruptedException {
+    public Kerberos(String name, int type, int damage, int locationX, int locationY) {
+        super(name, type, damage, locationX, locationY);
+    }
+
+    public void generateRandom(int[][] numbers) throws InterruptedException {
 
         Random rnd =new Random();
 
@@ -33,6 +37,11 @@ public class Kerberos extends Enemy{
             }
         }
 
+
+    }
+
+    @Override
+    public void act() {
 
     }
 }

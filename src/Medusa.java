@@ -3,7 +3,12 @@ import java.util.Random;
 public class Medusa extends Enemy{
 
 
-    public void generateRandomMedusa(int[][] numbers) throws InterruptedException {
+    public Medusa(String name, int type, int damage, int locationX, int locationY) {
+        super(name, type, damage, locationX, locationY);
+    }
+
+
+    public void generateRandom(int[][] numbers) throws InterruptedException {
 
         Random rnd =new Random();
 
@@ -17,8 +22,6 @@ public class Medusa extends Enemy{
                 flag=false;
             }
         }
-
-
     }
 
     public void deleteRandomMedusa(int[][] numbers) throws InterruptedException {
@@ -35,6 +38,11 @@ public class Medusa extends Enemy{
                 }
             }
         }
+
+    }
+
+    @Override
+    public void act() {
 
     }
 }

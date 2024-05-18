@@ -12,9 +12,9 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.awt.event.KeyListener;
 
-public class ScoreTable {
+public class ScoreTable implements ScoreTableInterface{
 
-    public static enigma.console.Console cn = Enigma.getConsole("HIGH SCORE", 120, 28, 20);
+    private static enigma.console.Console cn = Enigma.getConsole("HIGH SCORE", 120, 28, 20);
 
     public ScoreTable(int end, int score) throws IOException, InterruptedException {
         consoleClear(cn);
@@ -112,7 +112,7 @@ public class ScoreTable {
                         cn.getTextWindow().output(numbers[m] + " " + name_new[m] + " " + surname_new[m],orange);
                 }
                 ScoreTable scoreSort =new ScoreTable(3,0);
-                Thread.sleep(5000);
+                Thread.sleep(1000);
                 EndMenu endMenu=new EndMenu();
                 endMenu.callEnd(2,"lila");
 
@@ -163,6 +163,16 @@ public class ScoreTable {
             cn.getTextWindow().output(tilda + " ", cyan);
 
         }
+    }
+
+    // Getter for 'cn'
+    public static Console getCn() {
+        return cn;
+    }
+
+    // Setter for 'cn'
+    public static void setCn(Console newCn) {
+        cn = newCn;
     }
 }
 
