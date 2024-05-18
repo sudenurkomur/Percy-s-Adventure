@@ -4,10 +4,6 @@ public class Main {
 
         //calling class start with in order
         new Menu(1);
+        //singleton design pattern
     }
-
 }
-
-// işlemleri map map gerçekleştireceğiz
-
-//map field çevir
