@@ -7,7 +7,9 @@ public class Ghost extends Staff {
 
     @Override
     public void act() {
-        // Ghost sabit duruyor, hiçbir şey yapmıyor
+        // The tree releases fragrant blossoms
+        System.out.println("The tree releases fragrant blossoms.");
     }
 }
+
 

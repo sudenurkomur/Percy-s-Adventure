@@ -5,10 +5,13 @@ public class Statue extends Staff {
         super(name, type, damage, location_type, location_array, spawn_locationX, spawn_locationY, speed);
     }
 
+    //strategy pattern
     @Override
     public void act() {
-
+        // The statue emits a mystical glow
+        System.out.println("The statue emits a mystical glow.");
     }
+
 
     // Method to get the current position of the statue
     public String getCurrentPosition() {

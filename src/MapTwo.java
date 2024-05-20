@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Random;
 import java.awt.*;
 
 public class MapTwo extends Map implements MapTwoInterface{

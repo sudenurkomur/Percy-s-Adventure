@@ -28,9 +28,12 @@ public class Rock extends Staff {
         }
     }
 
+    //strategy pattern
     @Override
     public void act() {
-
+        // Custom action specific to the subclass
+        System.out.println("Custom action performed.");
     }
+
 }
 

@@ -5,8 +5,10 @@ public class Tree extends Staff {
 
     @Override
     public void act() {
-
+        // The ghost lets out a chilling wail
+        System.out.println("The ghost lets out a chilling wail.");
     }
+
 
     // Method to get the current position of the tree
     public String getCurrentPosition() {
