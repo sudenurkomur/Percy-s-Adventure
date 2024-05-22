@@ -186,7 +186,7 @@ public class GameStory {
                         playBackgroundMusic("/Users/sudenurkomur/Downloads/mouse.wav");
                         characterInt(3);
                         enable=1;
-                        Thread.sleep(7000);
+                        Thread.sleep(3000);
                         Map map=new Map(60,60);
                         map.callMap();
                     }
